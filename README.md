@@ -1,10 +1,10 @@
-# 🚀 GUIA COMPLETO DE ESTUDO — CELERY + DJANGO
+# GUIA COMPLETO DE ESTUDO — CELERY + DJANGO
 
 Guia definitivo explicando estrutura, configuração, funcionamento interno e arquitetura profissional usando Celery + Django com Redis.
 
 ---
 
-# 📂 ESTRUTURA DO PROJETO
+# ESTRUTURA DO PROJETO
 
 ```
 meu_projeto/
@@ -23,7 +23,7 @@ meu_projeto/
 
 ---
 
-# 1️⃣ ARQUIVO: meu_projeto/celery.py
+# ARQUIVO: meu_projeto/celery.py
 
 ```python
 import os
@@ -38,7 +38,7 @@ app.config_from_object("django.conf:settings", namespace="CELERY")
 app.autodiscover_tasks()
 ```
 
-## 🔎 Explicação detalhada
+## Explicação detalhada
 
 - os → permite acessar variáveis de ambiente.
 - Celery → classe principal que cria a aplicação Celery.
@@ -49,7 +49,7 @@ app.autodiscover_tasks()
 
 ---
 
-# 2️⃣ ARQUIVO: meu_projeto/__init__.py
+# ARQUIVO: meu_projeto/__init__.py
 
 ```python
 from .celery import app as celery_app
@@ -57,7 +57,7 @@ from .celery import app as celery_app
 __all__ = ("celery_app",)
 ```
 
-## 🔎 Explicação
+## Explicação
 
 - Garante que o Celery seja carregado quando o Django iniciar.
 - Sem isso, as tarefas podem não ser registradas.
@@ -65,7 +65,7 @@ __all__ = ("celery_app",)
 
 ---
 
-# 3️⃣ ARQUIVO: settings.py
+# ARQUIVO: settings.py
 
 ```python
 CELERY_BROKER_URL = "redis://localhost:6379/0"
@@ -78,7 +78,7 @@ CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "UTC"
 ```
 
-## 🔎 Explicação
+## Explicação
 
 - Broker → intermediário (Redis).
 - Redis porta 6379 banco 0.
@@ -89,7 +89,7 @@ CELERY_TIMEZONE = "UTC"
 
 ---
 
-# 4️⃣ ARQUIVO: usuarios/tasks.py
+# ARQUIVO: usuarios/tasks.py
 
 ```python
 from celery import shared_task
@@ -111,7 +111,7 @@ def enviar_email_usuario(self, usuario_id):
         raise self.retry(exc=e, countdown=5)
 ```
 
-## 🔎 Explicação
+## Explicação
 
 - shared_task → registra a função como tarefa do Celery.
 - bind=True → permite acessar self.
@@ -121,7 +121,7 @@ def enviar_email_usuario(self, usuario_id):
 
 ---
 
-# 5️⃣ ARQUIVO: usuarios/views.py
+# ARQUIVO: usuarios/views.py
 
 ```python
 from django.http import JsonResponse
@@ -137,7 +137,7 @@ def enviar_email(request):
     return JsonResponse({"mensagem": "Tarefa agendada"})
 ```
 
-## 🔎 Explicação
+## Explicação
 
 - apply_async() → versão avançada do delay().
 - args=[1] → 1 vira o parametro usuario_id.
@@ -146,7 +146,7 @@ def enviar_email(request):
 
 ---
 
-# 🔄 FLUXO COMPLETO DO SISTEMA
+# FLUXO COMPLETO DO SISTEMA
 
 1) View chama apply_async()  
 2) Celery serializa a tarefa  
@@ -158,7 +158,7 @@ def enviar_email(request):
 
 ---
 
-# 📌 PAPEL DE CADA ARQUIVO
+# PAPEL DE CADA ARQUIVO
 
 celery.py   → Inicializa Celery  
 __init__.py → Conecta Celery ao Django  
@@ -168,7 +168,7 @@ views.py    → Dispara tarefas
 
 ---
 
-# 🏗 ARQUITETURA PROFISSIONAL
+# ARQUITETURA PROFISSIONAL
 
 Producer → Django  
 Broker   → Redis  
@@ -178,7 +178,7 @@ Esse padrão é chamado de sistema distribuído baseado em filas.
 
 ---
 
-# ▶️ COMANDO PARA RODAR WORKER
+# COMANDO PARA RODAR WORKER
 
 ```bash
 celery -A meu_projeto worker --loglevel=info
@@ -186,7 +186,7 @@ celery -A meu_projeto worker --loglevel=info
 
 ---
 
-# 🧠 CONCEITOS DOMINADOS
+# CONCEITOS DOMINADOS
 
 ✔ Integração Celery + Django  
 ✔ Broker  
@@ -198,7 +198,7 @@ celery -A meu_projeto worker --loglevel=info
 
 ---
 
-# 🎯 CONCLUSÃO
+# CONCLUSÃO
 
 Você configurou um sistema assíncrono profissional capaz de:
 
@@ -217,9 +217,9 @@ Esse é o padrão usado em:
 
 ---
 
-# 👨‍💻 Autor
+# Autor
 
 **Orlando Conceição**  
 Back-end Developer  
 
-📧 Contato: orlandoconceicao94@gmail.com  
+Contato: orlandoconceicao94@gmail.com  

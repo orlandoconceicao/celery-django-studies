@@ -188,13 +188,13 @@ celery -A meu_projeto worker --loglevel=info
 
 # CONCEITOS DOMINADOS
 
-✔ Integração Celery + Django  
-✔ Broker  
-✔ Worker  
-✔ Retry automático  
-✔ Serialização  
-✔ apply_async()  
-✔ Arquitetura distribuída  
+- Integração Celery + Django
+- Broker
+- Worker
+- Retry automático
+- Serialização
+- `apply_async()`
+- Arquitetura distribuída
 
 ---
 
@@ -219,7 +219,8 @@ Esse é o padrão usado em:
 
 # Autor
 
-**Orlando Conceição**  
-Back-end Developer  
+**Orlando Conceição Vilhalba de Almeida**
 
-Contato: orlandoconceicao94@gmail.com  
+Desenvolvedor Backend em formação, com foco em Python, Django e processamento assíncrono com Celery.
+
+GitHub: [orlandoconceicao](https://github.com/orlandoconceicao)

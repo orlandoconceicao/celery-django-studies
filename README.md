@@ -148,31 +148,31 @@ def enviar_email(request):
 
 # FLUXO COMPLETO DO SISTEMA
 
-1) View chama apply_async()  
-2) Celery serializa a tarefa  
-3) Envia para o Redis (Broker)  
-4) Worker pega da fila  
-5) Executa  
-6) Se falhar → retry automático  
-7) Salva resultado  
+1) View chama apply_async()
+2) Celery serializa a tarefa
+3) Envia para o Redis (Broker)
+4) Worker pega da fila
+5) Executa
+6) Se falhar → retry automático
+7) Salva resultado
 
 ---
 
 # PAPEL DE CADA ARQUIVO
 
-celery.py   → Inicializa Celery  
-__init__.py → Conecta Celery ao Django  
-settings.py → Configura Redis  
-tasks.py    → Define tarefas e retry  
-views.py    → Dispara tarefas  
+celery.py   → Inicializa Celery
+__init__.py → Conecta Celery ao Django
+settings.py → Configura Redis
+tasks.py    → Define tarefas e retry
+views.py    → Dispara tarefas
 
 ---
 
 # ARQUITETURA PROFISSIONAL
 
-Producer → Django  
-Broker   → Redis  
-Consumer → Worker  
+Producer → Django
+Broker   → Redis
+Consumer → Worker
 
 Esse padrão é chamado de sistema distribuído baseado em filas.
 
@@ -209,18 +209,22 @@ Você configurou um sistema assíncrono profissional capaz de:
 
 Esse é o padrão usado em:
 
-- Processamento de pagamentos  
-- Envio de e-mails em massa  
-- Processamento de imagens  
-- Integrações com APIs externas  
-- Filas de microserviços  
+- Processamento de pagamentos
+- Envio de e-mails em massa
+- Processamento de imagens
+- Integrações com APIs externas
+- Filas de microserviços
 
 ---
 
-# Autor
+## Autor
 
 **Orlando Conceição Vilhalba de Almeida**
 
-Desenvolvedor Backend em formação, com foco em Python, Django e processamento assíncrono com Celery.
+Desenvolvedor Backend em formação, com foco em Python, Django, Django REST Framework, PostgreSQL, APIs REST e Docker, utilizando React como tecnologia complementar para integração das aplicações.
 
-GitHub: [orlandoconceicao](https://github.com/orlandoconceicao)
+GitHub: [[github.com/orlandoconceicao](https://github.com/orlandoconceicao)](https://github.com/orlandoconceicao)
+
+LinkedIn: [[linkedin.com/in/orlando-conceição-582234315](https://www.linkedin.com/in/orlando-concei%C3%A7%C3%A3o-582234315)](https://www.linkedin.com/in/orlando-concei%C3%A7%C3%A3o-582234315)
+
+Portfólio: [[orlandoconceicao.github.io](https://orlandoconceicao.github.io/)](https://orlandoconceicao.github.io)
